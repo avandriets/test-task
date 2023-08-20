@@ -1,0 +1,61 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.cursor-text {
+  cursor: text !important;
+}
+
+.pointer-events {
+  pointer-events: none;
+}
+
+// opacity
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-quarter {
+  opacity: 0.25;
+}
+
+.opacity-half {
+  opacity: 0.5;
+}
+
+.opacity-quarter-to {
+  opacity: 0.75;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.mat-tooltip {
+  font-size: 16px !important;
+}
+
+table.mat-table-fixed {
+  table-layout: fixed;
+}
+
+table.mat-table-auto {
+  table-layout: auto;
+}
+
+.mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
+}

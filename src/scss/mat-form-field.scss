@@ -1,0 +1,23 @@
+.mat-form-field {
+  width: 100%;
+
+  &.no-space .mat-form-field-wrapper {
+    margin: 0;
+    padding-bottom: 0;
+
+    & .mat-form-field-underline {
+      bottom: 0;
+    }
+  }
+}
+
+.mat-form-field-infix {
+  width: 100%;
+}
+
+.mat-form-field-appearance-outline {
+  &.no-space .mat-form-field-wrapper {
+    margin: 0;
+    padding-bottom: 0;
+  }
+}

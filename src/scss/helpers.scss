@@ -1,0 +1,107 @@
+@each $prop, $abbrev in (margin: m, padding: p) {
+  $start: 0;
+
+  @if ($abbrev == m) {
+    $start: -24;
+
+    .m-auto {
+      margin: auto !important;
+    }
+
+    .mt-auto {
+      margin-top: auto !important;
+    }
+
+    .mr-auto {
+      margin-right: auto !important;
+    }
+
+    .mb-auto {
+      margin-bottom: auto !important;
+    }
+
+    .ml-auto {
+      margin-left: auto !important;
+    }
+
+    .mx-auto {
+      margin-right: auto !important;
+      margin-left: auto !important;
+    }
+
+    .my-auto {
+      margin-top: auto !important;
+      margin-bottom: auto !important;
+    }
+  }
+
+  @for $index from $start through 64 {
+    $size: $index * 4;
+    $length: #{$size}px;
+
+    .#{$abbrev}-#{$size} {
+      #{$prop}: $length !important;
+    }
+  }
+
+  @for $index from $start through 64 {
+    $size: $index * 4;
+    $length: #{$size}px;
+
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-right: $length !important;
+      #{$prop}-left: $length !important;
+    }
+
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length !important;
+      #{$prop}-bottom: $length !important;
+    }
+  }
+
+  @for $index from $start through 64 {
+    $size: $index * 4;
+    $length: #{$size}px;
+
+    .#{$abbrev}t-#{$size} {
+      #{$prop}-top: $length !important;
+    }
+
+    .#{$abbrev}r-#{$size} {
+      #{$prop}-right: $length !important;
+    }
+
+    .#{$abbrev}b-#{$size} {
+      #{$prop}-bottom: $length !important;
+    }
+
+    .#{$abbrev}l-#{$size} {
+      #{$prop}-left: $length !important;
+    }
+  }
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.align-bottom {
+  vertical-align: bottom;
+}
+
+// display
+
+.d-block { display: block !important; }
+.d-none { display: none !important; }

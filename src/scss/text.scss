@@ -1,0 +1,59 @@
+// text-truncate
+
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-truncate {
+  @include text-truncate;
+}
+
+.text-no-wrap {
+  white-space: nowrap;
+}
+
+.text-pre {
+  white-space: pre;
+}
+
+// line-height
+
+@for $index from 24 through 36 {
+  $size: $index + 4;
+  $length: #{$size}px;
+
+  .lh-#{$size} {
+    line-height: $length !important;
+  }
+}
+
+// alignment
+
+.text-left   { text-align: left !important; }
+.text-right  { text-align: right !important; }
+.text-center { text-align: center !important; }
+
+.font-weight-light  { font-weight: 300 !important; }
+.font-weight-normal { font-weight: 400 !important; }
+.font-weight-semibold { font-weight: 500 !important; }
+.font-weight-bold   { font-weight: 700 !important; }
+.font-italic        { font-style: italic !important; }
+// display
+
+.d-inline-block {display: inline-block !important}
+
+
+.text-break {
+  word-break: break-word !important; // IE & < Edge 18
+  overflow-wrap: break-word !important;
+}
+
+.lh-24 {
+  line-height: 24px;
+}
+
+.lh-36 {
+  line-height: 36px;
+}

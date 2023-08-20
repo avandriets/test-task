@@ -1,0 +1,37 @@
+@mixin md-icon-size($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+  line-height: $size;
+}
+
+mat-icon{
+  &.md-12 {
+    @include md-icon-size(12px);
+  }
+
+  &.md-18 {
+    @include md-icon-size(18px);
+  }
+
+  &.md-32 {
+    @include md-icon-size(32px);
+  }
+
+  &.md-64 {
+    @include md-icon-size(64px);
+  }
+
+  &.md-128 {
+    @include md-icon-size(128px);
+  }
+}
+
+.hovered-icon {
+  & .mat-icon-button {
+    opacity: 0;
+  }
+  &:hover .mat-icon-button {
+    opacity: 1;
+  }
+}
