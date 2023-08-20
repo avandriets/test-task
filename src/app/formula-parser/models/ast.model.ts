@@ -1,4 +1,4 @@
-import { AstNode, DFS, MathOp } from '../interfaces';
+import { AstNode, DFSFunc, MathOp } from '../interfaces';
 import { AbstractModel } from './abstract-model';
 
 export class AstModel extends AbstractModel<AstNode> {
@@ -16,7 +16,7 @@ export class AstModel extends AbstractModel<AstNode> {
   }
 
   private astToFormula(): string {
-    const dfs: DFS = (root: AstNode): string => {
+    const dfs: DFSFunc = (root: AstNode): string => {
       if (!root) {
         return '';
       }
@@ -24,6 +24,8 @@ export class AstModel extends AbstractModel<AstNode> {
       switch (root.type) {
         case 'PAREN':
           return `(${dfs(root.expression)})`;
+        case 'NUMBER':
+          return `${root.value}`;
         case 'NEGATION':
           return `-${dfs(root.expression)}`;
         case 'POWER':
@@ -40,8 +42,6 @@ export class AstModel extends AbstractModel<AstNode> {
           return 'PI';
         case 'E':
           return 'E';
-        case 'NUMBER':
-          return `${root.value}`;
         default:
           return root.name;
       }

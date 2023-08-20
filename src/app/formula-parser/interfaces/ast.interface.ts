@@ -1,7 +1,4 @@
-export type AstNodeTypes = 'PAREN' | 'NUMBER' | 'ADDITION' | 'SUBTRACTION' | 'DIVISION'
-  | 'MULTIPLICATION' | 'FUNCTION' | 'POWER' | 'NEGATION' | 'PI' | 'E' | 'VARIABLE';
-
-export type DFS = (a: any) => string;
+export type DFSFunc = (node: AstNode) => string;
 
 export const MathOp: { [key: string]: string } = {
   'ADDITION': '+',
@@ -12,32 +9,53 @@ export const MathOp: { [key: string]: string } = {
   'E': 'E',
 };
 
-export type AstNode = AstNumber & AstExpression & AstGroup & AstFunction & AstPower;
+export type AstNode = { type: unknown; }
+  & (AstNumber | AstExpression | AstGroup | AstFunction | AstPower | AstNegation | AstVariable | AstPI | AstE);
 
-export interface AstGroup {
-  type?: AstNodeTypes;
-  expression?: AstGroup | AstNumber | AstExpression | AstFunction | AstPower;
-}
-
-export interface AstExpression {
-  type?: AstNodeTypes;
-  left?: AstNode;
-  right?: AstNode;
-}
-
-export interface AstNumber {
-  type: AstNodeTypes;
+export interface AstPI {
+  type: 'PI';
   value: number;
 }
 
+export interface AstE {
+  type: 'E';
+  value: number;
+}
+
+export interface AstNumber {
+  type: 'NUMBER';
+  value: number;
+}
+
+export interface AstVariable {
+  type: 'VARIABLE';
+  name: string;
+}
+
+export interface AstGroup {
+  type: 'PAREN';
+  expression: AstExpression;
+}
+
+export interface AstNegation {
+  type: 'NEGATION';
+  expression: AstExpression;
+}
+
+export interface AstExpression {
+  type: 'ADDITION' | 'SUBTRACTION' | 'DIVISION' | 'MULTIPLICATION';
+  left: AstNode;
+  right: AstNode;
+}
+
 export interface AstFunction {
-  type?: AstNodeTypes;
-  name?: string;
-  arguments?: AstNode[];
+  type: 'FUNCTION';
+  name: string;
+  arguments: AstNode[];
 }
 
 export interface AstPower {
-  type?: AstNodeTypes;
-  expression?: AstExpression;
-  power?: AstNode;
+  type: 'POWER';
+  expression: AstExpression;
+  power: AstNode;
 }
