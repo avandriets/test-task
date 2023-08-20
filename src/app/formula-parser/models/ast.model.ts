@@ -1,9 +1,9 @@
-import { AstInterface, DFS, operators } from '../interfaces';
+import { AstNode, DFS, MathOp } from '../interfaces';
 import { AbstractModel } from './abstract-model';
 
-export class AstModel extends AbstractModel<AstInterface> {
+export class AstModel extends AbstractModel<AstNode> {
 
-  constructor(protected override data: AstInterface) {
+  constructor(protected override data: AstNode) {
     super(data);
   }
 
@@ -16,34 +16,35 @@ export class AstModel extends AbstractModel<AstInterface> {
   }
 
   private astToFormula(): string {
-    const dfs: DFS = (root: any): string => {
+    const dfs: DFS = (root: AstNode): string => {
       if (!root) {
         return '';
       }
 
-      if (root.type === 'PAREN') {
-        return `(${dfs(root.expression)})`;
+      switch (root.type) {
+        case 'PAREN':
+          return `(${dfs(root.expression)})`;
+        case 'NEGATION':
+          return `-${dfs(root.expression)}`;
+        case 'POWER':
+          return `${dfs(root.expression)}ˆ${dfs(root.power)}`;
+        case 'FUNCTION':
+          const args = root.arguments.map((e: any) => dfs(e)).join(',');
+          return `${root.name}(${args})`;
+        case 'ADDITION':
+        case 'SUBTRACTION':
+        case 'DIVISION':
+        case 'MULTIPLICATION':
+          return `${dfs(root.left)}${MathOp[root.type]}${dfs(root.right)}`;
+        case 'PI':
+          return 'PI';
+        case 'E':
+          return 'E';
+        case 'NUMBER':
+          return `${root.value}`;
+        default:
+          return root.name;
       }
-
-      if (root.type === 'NEGATION') {
-        return `-${dfs(root.expression)}`;
-      }
-
-      if (root.type === 'POWER') {
-        return `${dfs(root.expression)}ˆ${dfs(root.power)}`;
-      }
-
-      if (root.type === 'FUNCTION') {
-        const args = root.arguments.map((e: any) => dfs(e)).join(',');
-        return `${root.name}(${args})`;
-      }
-
-      let left = dfs(root.left);
-      let right = dfs(root.right);
-
-      const value = operators[root.type] ?? root.value ?? root.name;
-
-      return `${left}${value}${right}`;
     };
 
     return dfs(this.data);
