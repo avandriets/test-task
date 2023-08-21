@@ -11,9 +11,13 @@
 {{ ast }}
 </pre>
 
-<!--<h2>Visualizer-to-Formula</h2>-->
-<!--<button mat-stroked-button-->
-<!--        color="primary"-->
-<!--        (click)="convertAstToFormula()">-->
-<!--  Convert AST to Formula-->
-<!--</button>-->
+<h2>Visualizer-to-Formula</h2>
+<button mat-stroked-button
+        color="primary"
+        (click)="aAstToFormula()">
+  Convert AST to Formula
+</button>
+
+<p *ngIf="astFormula$ | async as astFormula">
+  Formula: {{ astFormula }}
+</p>

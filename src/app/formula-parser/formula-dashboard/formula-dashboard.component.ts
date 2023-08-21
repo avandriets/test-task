@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormulaDashboardComponent implements OnInit {
-  defaultFormula = '($b + SQRT (SQR($b) - 4 * $a)) / (2 * $a)';
+  readonly defaultFormula = '($b + SQRT (SQR($b) - 4 * $a)) / (2 * $a)';
   formula$!: Observable<string | null>;
 
   constructor(
@@ -20,6 +20,7 @@ export class FormulaDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.formula$ = this.activatedRoute.queryParamMap.pipe(
+      tap(params => (params.get('formula') === null ? this.onFormulaUpdate(this.defaultFormula) : null)),
       map(params => params.get('formula')),
     );
   }

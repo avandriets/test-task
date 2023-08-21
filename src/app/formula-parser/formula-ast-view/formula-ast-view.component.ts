@@ -12,6 +12,7 @@ import { AstModel } from '../models';
 })
 export class FormulaAstViewComponent {
   astText$: Subject<string> = new Subject<string>();
+  astFormula$: Subject<string> = new Subject<string>();
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,9 @@ export class FormulaAstViewComponent {
   }
 
   aAstToFormula(): void {
-    console.log('To be implemented');
+    const ast: AstModel = this.formulaParserService
+      .parseFormula(this.route.snapshot.queryParamMap.get('formula') || '');
+
+    this.astFormula$.next(ast.getFormula());
   }
 }
