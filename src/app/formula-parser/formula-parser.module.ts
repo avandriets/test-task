@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { FormulaAstEditorComponent } from './formula-ast-editor/formula-ast-editor.component';
-import { FormulaContainerComponent } from './formula-ast-editor/components/top-level/formula-container.component';
+import { FormulaContainerComponent } from './formula-ast-editor/components/formula-container/formula-container.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PortalModule } from '@angular/cdk/portal';
