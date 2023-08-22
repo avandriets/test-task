@@ -21,9 +21,15 @@
       <ng-container *ngFor="let item of branchesFormArray.controls; let i = index;"
                     formArrayName="branches">
 
-        <app-formula-item [formControlName]="i"
-                          (delete)="onDeleteGroup(i)">
-        </app-formula-item>
+        <ng-container *ngIf="item.value.type === 'NUMBER';else defaultContainer">
+          <app-formula-item [formControlName]="i"
+                            (delete)="onDeleteGroup(i)">
+          </app-formula-item>
+        </ng-container>
+        <ng-template #defaultContainer>
+          <app-formula-container [formControlName]="i">
+          </app-formula-container>
+        </ng-template>
 
       </ng-container>
     </div>
