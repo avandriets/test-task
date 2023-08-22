@@ -1,0 +1,13 @@
+<form *ngIf="form"
+      [formGroup]="form">
+
+  <mat-form-field appearance="outline"
+                  class="no-space">
+
+    <mat-label>Number</mat-label>
+    <input matInput
+           placeholder="Input number"
+           formControlName="value">
+  </mat-form-field>
+
+</form>

@@ -1,0 +1,20 @@
+<div class="pb-24">
+  <button mat-stroked-button
+          color="primary"
+          (click)="generateAstTree()">
+    Generate AST Tree
+  </button>
+  <button mat-stroked-button
+          color="primary"
+          (click)="generateFormula()">
+    Generate Formula
+  </button>
+</div>
+
+<form *ngIf="form"
+      [formGroup]="form">
+
+  <app-formula-container formControlName="tree">
+  </app-formula-container>
+
+</form>

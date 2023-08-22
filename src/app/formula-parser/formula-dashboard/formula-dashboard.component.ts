@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -20,7 +20,6 @@ export class FormulaDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.formula$ = this.activatedRoute.queryParamMap.pipe(
-      tap(params => (params.get('formula') === null ? this.onFormulaUpdate(this.defaultFormula) : null)),
       map(params => params.get('formula')),
     );
   }

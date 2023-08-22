@@ -1,9 +1,9 @@
 export class AbstractModel<T> {
 
-  public constructor(protected data: T) {
+  constructor(protected data: T) {
   }
 
-  public getData(): T {
+  getData(): T {
     return { ...this.data as any };
   }
 }

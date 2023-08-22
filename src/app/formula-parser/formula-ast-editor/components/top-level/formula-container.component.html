@@ -1,0 +1,31 @@
+<form *ngIf="form"
+      [formGroup]="form">
+
+  <div fxLayout="row"
+       fxLayoutGap="16px"
+       fxLayoutAlign="space-between start">
+
+    <mat-form-field fxFlex="10"
+                    appearance="outline">
+      <mat-label>Operator</mat-label>
+
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let operator of operators;"
+                    [value]="operator">
+          {{ operator }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div fxFlex="90">
+      <ng-container *ngFor="let item of branchesFormArray.controls; let i = index;"
+                    formArrayName="branches">
+
+        <app-formula-item [formControlName]="i"
+                          (delete)="onDeleteGroup(i)">
+        </app-formula-item>
+
+      </ng-container>
+    </div>
+  </div>
+</form>

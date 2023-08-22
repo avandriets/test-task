@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { FormulaParserService } from '../services';
 import { AstModel } from '../models';
 
@@ -11,12 +11,12 @@ import { AstModel } from '../models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormulaAstViewComponent {
-  astText$: Subject<string> = new Subject<string>();
+  astText$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   astFormula$: Subject<string> = new Subject<string>();
 
   constructor(
-    private route: ActivatedRoute,
-    private formulaParserService: FormulaParserService,
+    private readonly route: ActivatedRoute,
+    private readonly formulaParserService: FormulaParserService,
   ) {
   }
 
@@ -25,9 +25,6 @@ export class FormulaAstViewComponent {
       .parseFormula(this.route.snapshot.queryParamMap.get('formula') || '');
 
     this.astText$.next(ast.getAstString());
-
-    console.log('The ast is:', ast.getData());
-    console.log(`Formula ${ast.getFormula()}`);
   }
 
   aAstToFormula(): void {
