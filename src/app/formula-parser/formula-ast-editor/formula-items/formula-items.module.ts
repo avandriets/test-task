@@ -13,9 +13,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { NumberItemComponent } from './number-item/number-item.component';
 import { NUMBER_ITEM_STRATEGY_ACCESSOR } from './number-item/number-item-strategy.service';
+import { NotImplementedComponent } from './not-implemented/not-implemented.component';
+import { NOT_IMPLEMENTED_STRATEGY_ACCESSOR } from './not-implemented/not-implemented-strategy.service';
 
 export const formulaComponents: Array<Type<any>> = [
   FormulaItemComponent,
+  NumberItemComponent,
+  NotImplementedComponent,
 ];
 
 @NgModule({
@@ -36,14 +40,14 @@ export const formulaComponents: Array<Type<any>> = [
   ],
   declarations: [
     ...formulaComponents,
-    NumberItemComponent,
   ],
   exports: [
-    FormulaItemComponent,
+    ...formulaComponents,
   ],
   providers: [
     FormulaItemsService,
     NUMBER_ITEM_STRATEGY_ACCESSOR,
+    NOT_IMPLEMENTED_STRATEGY_ACCESSOR,
   ],
 })
 export class FormulaItemsModule {

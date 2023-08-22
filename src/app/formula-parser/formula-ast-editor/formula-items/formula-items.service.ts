@@ -29,7 +29,9 @@ export class FormulaItemsService {
 
     const nameForStrategy = `${config.node?.type}`;
 
-    const formulaStrategy = this.formulaStrategy.find(s => s.canHandle().includes(nameForStrategy));
+    const formulaStrategy
+      = this.formulaStrategy.find(s => s.canHandle().includes(nameForStrategy))
+      ?? this.formulaStrategy.find(s => s.canHandle().includes('NOT-IMPLEMENTED'));
 
     const componentFormulaPortal = new ComponentPortal<BaseFormulaItemComponent>(formulaStrategy.getComponent(), null, formulaInjector);
 
