@@ -15,6 +15,10 @@
   </button>
 </div>
 
+<div class="mat-body-1 pb-24">
+  <strong>Formula:</strong> {{ astFormula$ | async }}
+</div>
+
 <form *ngIf="form"
       [formGroup]="form">
 

@@ -13,8 +13,6 @@
 {{ astText$ | async }}
 </pre>
 
-<app-formula-ast-editor></app-formula-ast-editor>
-
 <div fxLayout="row"
      fxLayoutAlign="space-between center"
      class="pt-24">
@@ -29,3 +27,7 @@
 <div class="mat-body-1 pb-24">
   <strong>Formula:</strong> {{ astFormula$ | async }}
 </div>
+
+<mat-divider class="mb-24"></mat-divider>
+
+<app-formula-ast-editor></app-formula-ast-editor>

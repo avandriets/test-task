@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AstModel } from '../models';
 import { ActivatedRoute } from '@angular/router';
 import { FormulaParserService } from '../services';
+import { AstNode } from '../interfaces';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-formula-ast-editor',
@@ -12,6 +14,7 @@ import { FormulaParserService } from '../services';
 })
 export class FormulaAstEditorComponent {
   form: FormGroup;
+  astFormula$: Subject<string> = new Subject<string>();
 
   constructor(
     private readonly fb: FormBuilder,
@@ -25,7 +28,8 @@ export class FormulaAstEditorComponent {
   }
 
   generateFormula(): void {
-    console.log('###', this.form.value);
+    const ast = new AstModel(this.generateASTTree());
+    this.astFormula$.next(ast.getFormula());
   }
 
   private initForm(): void {
@@ -35,5 +39,49 @@ export class FormulaAstEditorComponent {
     this.form = this.fb.group({
       tree: [ast?.getData(), [Validators.required]],
     });
+  }
+
+  private generateASTTree(): AstNode {
+    const cloneBT = (root: any): any => {
+      if (!root) {
+        return null;
+      }
+
+      const newNode: { [key: string]: any } = {
+        type: root.type,
+      };
+
+      switch (root.type) {
+        case 'PAREN':
+          newNode['expression'] = cloneBT(root?.branches?.[0] ?? root.expression);
+          break;
+        case 'NUMBER':
+          newNode['value'] = root.value;
+          break;
+        // case 'NEGATION':
+        //   return `-${dfs(root.expression)}`;
+        // case 'POWER':
+        //   return `${dfs(root.expression)}ˆ${dfs(root.power)}`;
+        // case 'FUNCTION':
+        //   const args = root.arguments.map((e: any) => dfs(e)).join(',');
+        //   return `${root.name}(${args})`;
+        case 'ADDITION':
+        case 'SUBTRACTION':
+        case 'DIVISION':
+        case 'MULTIPLICATION':
+          newNode['left'] = cloneBT(root?.branches?.[0] ?? root.left);
+          newNode['right'] = cloneBT(root?.branches?.[1] ?? root.right);
+        // case 'PI':
+        //   return 'PI';
+        // case 'E':
+        //   return 'E';
+        // default:
+        //   return root.name;
+      }
+
+      return newNode;
+    };
+
+    return cloneBT(this.form.value.tree?.branches?.[0] ?? this.form.value.tree);
   }
 }
