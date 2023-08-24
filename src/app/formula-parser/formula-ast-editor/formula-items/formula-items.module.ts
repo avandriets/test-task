@@ -19,12 +19,14 @@ import { AggregationItemComponent } from './aggregation-item/aggregation-item.co
 import { AGGREGATION_ITEM_STRATEGY_ACCESSOR } from './aggregation-item/aggregation-item-strategy.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { FormulaOperationSelectorComponent } from './formula-operation-selector/formula-operation-selector.component';
 
 export const formulaComponents: Array<Type<any>> = [
   FormulaItemComponent,
   NumberItemComponent,
   NotImplementedComponent,
   AggregationItemComponent,
+  FormulaOperationSelectorComponent,
 ];
 
 @NgModule({

@@ -40,73 +40,8 @@ export class AggregationItemComponent extends BaseFormulaItemComponent implement
     this.changeDetectorRef.markForCheck();
   }
 
-  addItem(typeOfNode: string) {
-    let numberItem = null;
-
-    switch (typeOfNode) {
-      case 'NUMBER':
-        numberItem = this.fb.control({
-          type: 'NUMBER',
-          value: 0,
-        });
-        break;
-      case 'SUBTRACTION':
-        numberItem = this.fb.control({
-          "type": "SUBTRACTION",
-          "left": {
-            "type": "NUMBER",
-            "value": 0,
-          },
-          "right": {
-            "type": "NUMBER",
-            "value": 0,
-          }
-        });
-        break;
-      case 'ADDITION':
-        numberItem = this.fb.control({
-          "type": "ADDITION",
-          "left": {
-            "type": "NUMBER",
-            "value": 0,
-          },
-          "right": {
-            "type": "NUMBER",
-            "value": 0,
-          }
-        });
-        break;
-      case 'DIVISION':
-        numberItem = this.fb.control({
-          "type": "DIVISION",
-          "left": {
-            "type": "NUMBER",
-            "value": 0,
-          },
-          "right": {
-            "type": "NUMBER",
-            "value": 0,
-          }
-        });
-        break;
-      case 'MULTIPLICATION':
-        numberItem = this.fb.control({
-          "type": "MULTIPLICATION",
-          "left": {
-            "type": "NUMBER",
-            "value": 0,
-          },
-          "right": {
-            "type": "NUMBER",
-            "value": 0,
-          }
-        });
-        break;
-      default:
-        return;
-    }
-
-    this.branchesFormArray.push(numberItem);
+  addItem(item: any): void {
+    this.branchesFormArray.push(item);
   }
 
   override onItemChange() {
