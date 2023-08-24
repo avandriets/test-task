@@ -42,47 +42,11 @@ export class FormulaOperationSelectorComponent {
         });
         break;
       case 'SUBTRACTION':
-        numberItem = this.fb.control({
-          type: 'SUBTRACTION',
-          left: {
-            type: 'NUMBER',
-            value: 0,
-          },
-          right: {
-            type: 'NUMBER',
-            value: 0,
-          }
-        });
-        break;
       case 'ADDITION':
-        numberItem = this.fb.control({
-          type: "ADDITION",
-          left: {
-            type: 'NUMBER',
-            value: 0,
-          },
-          right: {
-            type: 'NUMBER',
-            value: 0,
-          }
-        });
-        break;
       case 'DIVISION':
-        numberItem = this.fb.control({
-          type: "DIVISION",
-          left: {
-            type: 'NUMBER',
-            value: 0,
-          },
-          right: {
-            type: 'NUMBER',
-            value: 0,
-          }
-        });
-        break;
       case 'MULTIPLICATION':
         numberItem = this.fb.control({
-          type: "MULTIPLICATION",
+          type: typeOfNode,
           left: {
             type: 'NUMBER',
             value: 0,
@@ -90,7 +54,16 @@ export class FormulaOperationSelectorComponent {
           right: {
             type: 'NUMBER',
             value: 0,
-          }
+          },
+        });
+        break;
+      case 'PAREN':
+        numberItem = this.fb.control({
+          type: 'PAREN',
+          expression: {
+            type: 'NUMBER',
+            value: 0,
+          },
         });
         break;
       default:

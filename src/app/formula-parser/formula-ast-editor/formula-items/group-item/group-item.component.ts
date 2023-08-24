@@ -1,19 +1,17 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { BaseFormulaItemComponent } from '../base-formula-item-component.directive';
-import { AstExpression, KeyValuePair } from '../../../interfaces';
+import { Subscription } from 'rxjs';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { AstGroup } from '../../../interfaces';
 import { ALL_OPERATORS } from '../utils/constants';
 
 @Component({
-  selector: 'app-aggregation-item',
-  templateUrl: './aggregation-item.component.html',
-  styleUrls: ['./aggregation-item.component.scss'],
+  selector: 'app-group-item',
+  templateUrl: './group-item.component.html',
+  styleUrls: ['./group-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AggregationItemComponent extends BaseFormulaItemComponent implements OnInit, OnDestroy {
-  operators: KeyValuePair[] = ALL_OPERATORS;
-
+export class GroupItemComponent extends BaseFormulaItemComponent implements OnInit, OnDestroy {
   private formChangesSubscription?: Subscription;
 
   constructor(
@@ -23,16 +21,20 @@ export class AggregationItemComponent extends BaseFormulaItemComponent implement
     super();
   }
 
-  get branchesFormArray(): FormArray {
-    return this.form.get('branches') as FormArray;
-  }
-
   ngOnInit(): void {
     this.reInitForm();
   }
 
+  get branchesFormArray(): FormArray {
+    return this.form.get('branches') as FormArray;
+  }
+
   ngOnDestroy(): void {
     this.formChangesSubscription?.unsubscribe();
+  }
+
+  override onItemChange() {
+    this.reInitForm();
   }
 
   onDeleteGroup(index: number): void {
@@ -44,25 +46,20 @@ export class AggregationItemComponent extends BaseFormulaItemComponent implement
     this.branchesFormArray.push(item);
   }
 
-  override onItemChange() {
-    this.reInitForm();
-  }
-
   private reInitForm(): void {
 
     if (!this.innerValue) {
       return;
     }
 
-    const numberItem = this.innerValue as AstExpression;
+    const expressionItem = this.innerValue as AstGroup;
 
     this.formChangesSubscription?.unsubscribe();
 
     this.form = this.fb.group({
-      type: [numberItem?.type, [Validators.required]],
+      type: [expressionItem?.type, [Validators.required]],
       branches: this.fb.array([
-          this.fb.control(numberItem.left),
-          this.fb.control(numberItem.right),
+          this.fb.control(expressionItem.expression),
         ],
       ),
     });
@@ -70,6 +67,7 @@ export class AggregationItemComponent extends BaseFormulaItemComponent implement
     this.setDisabledState(this.innerDisabled);
 
     this.formChangesSubscription = this.form.valueChanges.subscribe(formValue => {
+
       this.innerValue = {
         ...this.value,
         ...formValue,

@@ -1,8 +1,10 @@
-<button mat-icon-button
+<button mat-mini-fab
+        color="primary"
         [disabled]="disabled"
         [matMenuTriggerFor]="addMenu">
-  <mat-icon>add</mat-icon>
+  <mat-icon>calculate</mat-icon>
 </button>
+
 <mat-menu #addMenu="matMenu">
   <button mat-menu-item
           (click)="addItem('NUMBER')">
@@ -31,5 +33,9 @@
   <button mat-menu-item
           (click)="addItem('MULTIPLICATION')">
     <span>Multiplication</span>
+  </button>
+  <button mat-menu-item
+          (click)="addItem('PAREN')">
+    <span>Parentheses</span>
   </button>
 </mat-menu>

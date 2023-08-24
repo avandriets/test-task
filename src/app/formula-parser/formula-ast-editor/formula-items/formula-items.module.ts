@@ -20,6 +20,8 @@ import { AGGREGATION_ITEM_STRATEGY_ACCESSOR } from './aggregation-item/aggregati
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { FormulaOperationSelectorComponent } from './formula-operation-selector/formula-operation-selector.component';
+import { GroupItemComponent } from './group-item/group-item.component';
+import { GROUP_ITEM_STRATEGY_ACCESSOR } from './group-item/group-item-strategy.service';
 
 export const formulaComponents: Array<Type<any>> = [
   FormulaItemComponent,
@@ -27,6 +29,7 @@ export const formulaComponents: Array<Type<any>> = [
   NotImplementedComponent,
   AggregationItemComponent,
   FormulaOperationSelectorComponent,
+  GroupItemComponent,
 ];
 
 @NgModule({
@@ -58,6 +61,7 @@ export const formulaComponents: Array<Type<any>> = [
     NUMBER_ITEM_STRATEGY_ACCESSOR,
     NOT_IMPLEMENTED_STRATEGY_ACCESSOR,
     AGGREGATION_ITEM_STRATEGY_ACCESSOR,
+    GROUP_ITEM_STRATEGY_ACCESSOR,
   ],
 })
 export class FormulaItemsModule {

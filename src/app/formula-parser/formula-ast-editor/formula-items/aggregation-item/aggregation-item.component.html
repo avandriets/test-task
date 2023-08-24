@@ -1,45 +1,41 @@
-<div class="container-border">
+<form *ngIf="form"
+      [formGroup]="form">
 
-  <form *ngIf="form"
-        [formGroup]="form">
+  <div fxLayout="row"
+       fxLayoutGap="16px"
+       fxLayoutAlign="space-between center">
 
-    <div fxLayout="row"
-         fxLayoutGap="16px"
+    <div fxFlex="20"
+         fxLayout="column"
          fxLayoutAlign="space-between center">
 
-      <div fxFlex="20"
-           fxLayout="column"
-           fxLayoutAlign="space-between center">
+      <mat-form-field class="operator"
+                      appearance="outline">
+        <mat-label>Operator</mat-label>
 
-        <mat-form-field class="operator"
-                        appearance="outline">
-          <mat-label>Operator</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let operator of operators;"
+                      [value]="operator.key">
+            {{ operator.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-          <mat-select formControlName="type">
-            <mat-option *ngFor="let operator of operators;"
-                        [value]="operator.key">
-              {{ operator.value }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+      <app-formula-operation-selector [disabled]="this.branchesFormArray.length > 1"
+                                      (valueChange)="onAddItem($event)">
+      </app-formula-operation-selector>
+    </div>
 
-        <app-formula-operation-selector [disabled]="this.branchesFormArray.length > 1"
-                                        (valueChange)="addItem($event)">
-        </app-formula-operation-selector>
-      </div>
+    <div fxFlex="80">
+      <div *ngFor="let item of branchesFormArray.controls; let i = index;"
+           class="pb-16"
+           formArrayName="branches">
 
-      <div fxFlex="80">
-        <div *ngFor="let item of branchesFormArray.controls; let i = index;"
-             class="pb-16"
-             formArrayName="branches">
+        <app-formula-item [formControlName]="i"
+                          (delete)="onDeleteGroup(i)">
+        </app-formula-item>
 
-          <app-formula-item [formControlName]="i"
-                            (delete)="onDeleteGroup(i)">
-          </app-formula-item>
-
-        </div>
       </div>
     </div>
-  </form>
-
-</div>
+  </div>
+</form>
