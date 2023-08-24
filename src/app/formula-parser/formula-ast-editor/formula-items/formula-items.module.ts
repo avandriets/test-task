@@ -22,6 +22,10 @@ import { MatCardModule } from '@angular/material/card';
 import { FormulaOperationSelectorComponent } from './formula-operation-selector/formula-operation-selector.component';
 import { GroupItemComponent } from './group-item/group-item.component';
 import { GROUP_ITEM_STRATEGY_ACCESSOR } from './group-item/group-item-strategy.service';
+import { PiItemComponent } from './PI-item/pi-item.component';
+import { PI_ITEM_STRATEGY_ACCESSOR } from './PI-item/pi-item-strategy.service';
+import { E_ITEM_STRATEGY_ACCESSOR } from './E-item/e-item-strategy.service';
+import { EItemComponent } from './E-item/e-item.component';
 
 export const formulaComponents: Array<Type<any>> = [
   FormulaItemComponent,
@@ -30,6 +34,8 @@ export const formulaComponents: Array<Type<any>> = [
   AggregationItemComponent,
   FormulaOperationSelectorComponent,
   GroupItemComponent,
+  PiItemComponent,
+  EItemComponent,
 ];
 
 @NgModule({
@@ -62,6 +68,8 @@ export const formulaComponents: Array<Type<any>> = [
     NOT_IMPLEMENTED_STRATEGY_ACCESSOR,
     AGGREGATION_ITEM_STRATEGY_ACCESSOR,
     GROUP_ITEM_STRATEGY_ACCESSOR,
+    PI_ITEM_STRATEGY_ACCESSOR,
+    E_ITEM_STRATEGY_ACCESSOR,
   ],
 })
 export class FormulaItemsModule {

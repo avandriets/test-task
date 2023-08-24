@@ -55,6 +55,8 @@ export class FormulaAstEditorComponent {
         case 'PAREN':
           newNode['expression'] = cloneBT(root?.branches?.[0] ?? root.expression);
           break;
+        case 'E':
+        case 'PI':
         case 'NUMBER':
           newNode['value'] = root.value;
           break;
@@ -71,10 +73,6 @@ export class FormulaAstEditorComponent {
         case 'MULTIPLICATION':
           newNode['left'] = cloneBT(root?.branches?.[0] ?? root.left);
           newNode['right'] = cloneBT(root?.branches?.[1] ?? root.right);
-        // case 'PI':
-        //   return 'PI';
-        // case 'E':
-        //   return 'E';
         // default:
         //   return root.name;
       }
