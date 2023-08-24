@@ -11,7 +11,7 @@ export class GroupItemStrategy implements FormulaStrategy {
   }
 
   canHandle(): string[] {
-    return ['PAREN'];
+    return ['PAREN', 'NEGATION'];
   }
 }
 

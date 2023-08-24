@@ -60,8 +60,9 @@ export class FormulaAstEditorComponent {
         case 'NUMBER':
           newNode['value'] = root.value;
           break;
-        // case 'NEGATION':
-        //   return `-${dfs(root.expression)}`;
+        case 'NEGATION':
+          newNode['expression'] = cloneBT(root?.branches?.[0] ?? root.expression);
+          break;
         // case 'POWER':
         //   return `${dfs(root.expression)}ˆ${dfs(root.power)}`;
         // case 'FUNCTION':
