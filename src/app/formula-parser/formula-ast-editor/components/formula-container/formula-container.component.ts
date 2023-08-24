@@ -43,7 +43,6 @@ export class FormulaContainerComponent implements ControlValueAccessor, OnDestro
   @Output() valueChange = new EventEmitter<AstNode>();
 
   form: FormGroup;
-  operators: string[] = ['ADDITION', 'SUBTRACTION', 'DIVISION', 'MULTIPLICATION'];
 
   private innerValue: AstNode & AstExpression = null;
   private innerDisabled = false;
