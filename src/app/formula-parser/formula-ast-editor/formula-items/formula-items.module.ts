@@ -15,11 +15,16 @@ import { NumberItemComponent } from './number-item/number-item.component';
 import { NUMBER_ITEM_STRATEGY_ACCESSOR } from './number-item/number-item-strategy.service';
 import { NotImplementedComponent } from './not-implemented/not-implemented.component';
 import { NOT_IMPLEMENTED_STRATEGY_ACCESSOR } from './not-implemented/not-implemented-strategy.service';
+import { AggregationItemComponent } from './aggregation-item/aggregation-item.component';
+import { AGGREGATION_ITEM_STRATEGY_ACCESSOR } from './aggregation-item/aggregation-item-strategy.service';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
 
 export const formulaComponents: Array<Type<any>> = [
   FormulaItemComponent,
   NumberItemComponent,
   NotImplementedComponent,
+  AggregationItemComponent,
 ];
 
 @NgModule({
@@ -37,6 +42,8 @@ export const formulaComponents: Array<Type<any>> = [
     FlexLayoutModule,
     PortalModule,
     MatDividerModule,
+    MatMenuModule,
+    MatCardModule,
   ],
   declarations: [
     ...formulaComponents,
@@ -48,6 +55,7 @@ export const formulaComponents: Array<Type<any>> = [
     FormulaItemsService,
     NUMBER_ITEM_STRATEGY_ACCESSOR,
     NOT_IMPLEMENTED_STRATEGY_ACCESSOR,
+    AGGREGATION_ITEM_STRATEGY_ACCESSOR,
   ],
 })
 export class FormulaItemsModule {

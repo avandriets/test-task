@@ -14,8 +14,9 @@ import {
   FormBuilder,
   FormGroup,
   NG_VALIDATORS,
-  NG_VALUE_ACCESSOR, ValidationErrors, Validator,
-  Validators,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator,
 } from '@angular/forms';
 import { AstExpression, AstNode } from '../../../interfaces';
 import { noop, Subscription } from 'rxjs';
@@ -131,11 +132,18 @@ export class FormulaContainerComponent implements ControlValueAccessor, OnDestro
 
     this.formChangesSubscription?.unsubscribe();
 
+    // this.form = this.fb.group({
+    //   type: [this.innerValue?.type, [Validators.required]],
+    //   branches: this.fb.array([
+    //       this.fb.control(this.innerValue.left),
+    //       this.fb.control(this.innerValue.right),
+    //     ],
+    //   ),
+    // });
+
     this.form = this.fb.group({
-      type: [this.innerValue.type, [Validators.required]],
       branches: this.fb.array([
-          this.fb.control(this.innerValue.left),
-          this.fb.control(this.innerValue.right),
+          this.fb.control(this.innerValue),
         ],
       ),
     });
@@ -146,6 +154,7 @@ export class FormulaContainerComponent implements ControlValueAccessor, OnDestro
 
     this.formChangesSubscription = this.form.valueChanges.subscribe(newValue => {
 
+      console.log('++ value change ++', newValue);
       this.innerValue = newValue;
       this.changeFn(newValue);
       this.touchedFn();

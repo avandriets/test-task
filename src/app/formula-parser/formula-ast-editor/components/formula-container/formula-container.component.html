@@ -1,37 +1,62 @@
-<form *ngIf="form"
-      [formGroup]="form">
 
-  <div fxLayout="row"
-       fxLayoutGap="16px"
-       fxLayoutAlign="space-between start">
+<!--  <div class="pb-24">-->
+<!--    <button mat-stroked-button-->
+<!--            color="primary">-->
+<!--      Add-->
+<!--    </button>-->
 
-    <mat-form-field fxFlex="10"
-                    appearance="outline">
-      <mat-label>Operator</mat-label>
+<!--    <button mat-stroked-button-->
+<!--            color="primary">-->
+<!--      Delete-->
+<!--    </button>-->
+<!--  </div>-->
 
-      <mat-select formControlName="type">
-        <mat-option *ngFor="let operator of operators;"
-                    [value]="operator">
-          {{ operator }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <form *ngIf="form"
+        [formGroup]="form">
 
-    <div fxFlex="90">
-      <ng-container *ngFor="let item of branchesFormArray.controls; let i = index;"
-                    formArrayName="branches">
+            <ng-container *ngFor="let item of branchesFormArray.controls; let i = index;"
+                          formArrayName="branches">
+              <app-formula-item [formControlName]="i"
+                                (delete)="onDeleteGroup(i)">
+              </app-formula-item>
+            </ng-container>
 
-        <ng-container *ngIf="!operators.includes(item.value.type); else defaultContainer">
-          <app-formula-item [formControlName]="i"
-                            (delete)="onDeleteGroup(i)">
-          </app-formula-item>
-        </ng-container>
-        <ng-template #defaultContainer>
-          <app-formula-container [formControlName]="i">
-          </app-formula-container>
-        </ng-template>
+    <!--    <div fxLayout="row"-->
+    <!--         fxLayoutGap="16px"-->
+    <!--         fxLayoutAlign="space-between center">-->
 
-      </ng-container>
-    </div>
-  </div>
-</form>
+    <!--      <mat-form-field fxFlex="10"-->
+    <!--                      appearance="outline">-->
+    <!--        <mat-label>Operator</mat-label>-->
+
+    <!--        <mat-select formControlName="type">-->
+    <!--          <mat-option *ngFor="let operator of operators;"-->
+    <!--                      [value]="operator">-->
+    <!--            {{ operator }}-->
+    <!--          </mat-option>-->
+    <!--        </mat-select>-->
+    <!--      </mat-form-field>-->
+
+    <!--      <div fxFlex="90">-->
+    <!--        <ng-container *ngFor="let item of branchesFormArray.controls; let i = index;"-->
+    <!--                      formArrayName="branches">-->
+
+    <!--          <ng-container *ngIf="!operators.includes(item.value.type); else defaultContainer">-->
+
+    <!--            <app-formula-item [formControlName]="i"-->
+    <!--                              (delete)="onDeleteGroup(i)">-->
+    <!--            </app-formula-item>-->
+
+    <!--          </ng-container>-->
+    <!--          <ng-template #defaultContainer>-->
+
+    <!--            <app-formula-container [formControlName]="i">-->
+    <!--            </app-formula-container>-->
+
+    <!--          </ng-template>-->
+
+    <!--        </ng-container>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+  </form>

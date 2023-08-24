@@ -25,7 +25,7 @@ export class FormulaAstEditorComponent {
   }
 
   generateFormula(): void {
-    console.log(this.form.value);
+    console.log('###', this.form.value);
   }
 
   private initForm(): void {

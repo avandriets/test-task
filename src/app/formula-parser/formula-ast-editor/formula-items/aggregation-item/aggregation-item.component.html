@@ -1,0 +1,90 @@
+<div class="container-border">
+
+  <form *ngIf="form"
+        [formGroup]="form">
+
+    <div fxLayout="row"
+         fxLayoutGap="16px"
+         fxLayoutAlign="space-between center">
+
+<!--      <mat-form-field fxFlex="10"-->
+<!--                      class="operator"-->
+<!--                      appearance="outline">-->
+<!--        <mat-label>Operator</mat-label>-->
+
+<!--        <mat-select formControlName="type">-->
+<!--          <mat-option *ngFor="let operator of operators;"-->
+<!--                      [value]="operator.key">-->
+<!--            {{ operator.value }}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+
+      <div fxFlex="20"
+           fxLayout="column"
+           fxLayoutAlign="space-between center">
+
+        <mat-form-field class="operator"
+                        appearance="outline">
+          <mat-label>Operator</mat-label>
+
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let operator of operators;"
+                        [value]="operator.key">
+              {{ operator.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-icon-button
+                [disabled]="this.branchesFormArray.length > 1"
+                [matMenuTriggerFor]="addMenu">
+          <mat-icon>add</mat-icon>
+        </button>
+        <mat-menu #addMenu="matMenu">
+          <button mat-menu-item
+                  (click)="addItem('NUMBER')">
+            <mat-icon>123</mat-icon>
+            <span>Number</span>
+          </button>
+          <button mat-menu-item
+                  [matMenuTriggerFor]="menuOperators">
+            <mat-icon>calculate</mat-icon>
+            <span>Operator</span>
+          </button>
+        </mat-menu>
+        <mat-menu #menuOperators="matMenu">
+          <button mat-menu-item
+                  (click)="addItem('ADDITION')">
+            <span>Addition</span>
+          </button>
+          <button mat-menu-item
+                  (click)="addItem('SUBTRACTION')">
+            <span>Subtraction</span>
+          </button>
+          <button mat-menu-item
+                  (click)="addItem('DIVISION')">
+            <span>Division</span>
+          </button>
+          <button mat-menu-item
+                  (click)="addItem('MULTIPLICATION')">
+            <span>Multiplication</span>
+          </button>
+        </mat-menu>
+      </div>
+
+      <div fxFlex="80">
+        <div *ngFor="let item of branchesFormArray.controls; let i = index;"
+             class="pb-16"
+             formArrayName="branches">
+
+          <app-formula-item [formControlName]="i"
+                            (delete)="onDeleteGroup(i)">
+          </app-formula-item>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

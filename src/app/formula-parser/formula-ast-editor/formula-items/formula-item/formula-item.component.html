@@ -1,13 +1,18 @@
-<div fxLayout="row"
-     fxLayoutAlign="space-between center"
-     class="pb-24">
+<mat-card>
+  <div fxLayout="row"
+       fxLayoutAlign="space-between start"
+       class="container-border">
 
-  <ng-template cdkPortalOutlet>
-  </ng-template>
+    <ng-template cdkPortalOutlet>
+    </ng-template>
 
-  <button mat-stroked-button
-          color="warn"
-          (click)="onDelete()">
-    Delete
-  </button>
-</div>
+    <button mat-button
+            color="accent"
+            (click)="onDelete()">
+      <mat-icon>
+        close
+      </mat-icon>
+    </button>
+
+  </div>
+</mat-card>
