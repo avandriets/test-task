@@ -92,6 +92,10 @@ Please describe the components which you want to create in order to do the flexi
 
 There are some test cases there which you can use as a reference or extend.
 
+SAP Implementation: 
+
+![Alt text](./assets/SAP_example.png?raw=true "Click to select and x button to remove")
+
 # Hints on running the scaffolded code
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
