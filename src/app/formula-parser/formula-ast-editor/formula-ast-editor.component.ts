@@ -28,7 +28,7 @@ export class FormulaAstEditorComponent {
   }
 
   generateFormula(): void {
-    const ast = new AstModel(this.generateASTTree());
+    const ast = new AstModel(this.getDataTree());
     this.astFormula$.next(ast.getFormula());
   }
 
@@ -41,7 +41,7 @@ export class FormulaAstEditorComponent {
     });
   }
 
-  private generateASTTree(): AstNode {
+  private getDataTree(): AstNode {
     const cloneBT = (root: any): any => {
       if (!root) {
         return null;
