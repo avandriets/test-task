@@ -1,33 +1,33 @@
-<!--<div fxLayout="row"-->
-<!--     fxLayoutAlign="space-between center"-->
-<!--     class="pt-24">-->
-<!--  <h3>Formula -> JSON View</h3>-->
-<!--  <button mat-stroked-button-->
-<!--          color="primary"-->
-<!--          (click)="formulaToASTText()">-->
-<!--    Generate AST JSON View-->
-<!--  </button>-->
-<!--</div>-->
+<div fxLayout="row"
+     fxLayoutAlign="space-between center"
+     class="pt-24">
+  <h3>Formula -> JSON View</h3>
+  <button mat-stroked-button
+          color="primary"
+          (click)="formulaToASTText()">
+    Generate AST JSON View
+  </button>
+</div>
 
-<!--<pre class="ast-text-view">-->
-<!--{{ astText$ | async }}-->
-<!--</pre>-->
+<pre class="ast-text-view">
+{{ astText$ | async }}
+</pre>
 
-<!--<div fxLayout="row"-->
-<!--     fxLayoutAlign="space-between center"-->
-<!--     class="pt-24">-->
-<!--  <h3>JSON -> Formula</h3>-->
-<!--  <button mat-stroked-button-->
-<!--          color="primary"-->
-<!--          (click)="aAstToFormula()">-->
-<!--    Convert AST to Formula-->
-<!--  </button>-->
-<!--</div>-->
+<div fxLayout="row"
+     fxLayoutAlign="space-between center"
+     class="pt-24">
+  <h3>JSON -> Formula</h3>
+  <button mat-stroked-button
+          color="primary"
+          (click)="aAstToFormula()">
+    Convert AST to Formula
+  </button>
+</div>
 
-<!--<div class="mat-body-1 pb-24">-->
-<!--  <strong>Formula:</strong> {{ astFormula$ | async }}-->
-<!--</div>-->
+<div class="mat-body-1 pb-24">
+  <strong>Formula:</strong> {{ astFormula$ | async }}
+</div>
 
-<!--<mat-divider class="mb-24"></mat-divider>-->
+<mat-divider class="mb-24"></mat-divider>
 
 <app-formula-ast-editor></app-formula-ast-editor>

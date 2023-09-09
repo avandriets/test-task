@@ -11,7 +11,13 @@ export class AggregationItemStrategy implements FormulaStrategy {
   }
 
   canHandle(): string[] {
-    return ['ADDITION', 'SUBTRACTION', 'DIVISION', 'MULTIPLICATION'];
+    return [
+      'ADDITION',
+      'SUBTRACTION',
+      'DIVISION',
+      'MULTIPLICATION',
+      'POWER',
+    ];
   }
 }
 

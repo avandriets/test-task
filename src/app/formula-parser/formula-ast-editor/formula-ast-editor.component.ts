@@ -63,8 +63,10 @@ export class FormulaAstEditorComponent {
         case 'NEGATION':
           newNode['expression'] = cloneBT(root?.branches?.[0] ?? root.expression);
           break;
-        // case 'POWER':
-        //   return `${dfs(root.expression)}ˆ${dfs(root.power)}`;
+        case 'POWER':
+          newNode['expression'] = cloneBT(root?.branches?.[0] ?? root.expression);
+          newNode['power'] = cloneBT(root?.branches?.[1] ?? root.power);
+          break;
         // case 'FUNCTION':
         //   const args = root.arguments.map((e: any) => dfs(e)).join(',');
         //   return `${root.name}(${args})`;

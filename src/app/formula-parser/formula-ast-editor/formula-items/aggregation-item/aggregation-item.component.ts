@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { BaseFormulaItemComponent } from '../base-formula-item-component.directive';
-import { AstExpression, KeyValuePair } from '../../../interfaces';
+import { KeyValuePair } from '../../../interfaces';
 import { ALL_OPERATORS } from '../utils/constants';
 
 @Component({
@@ -54,15 +54,15 @@ export class AggregationItemComponent extends BaseFormulaItemComponent implement
       return;
     }
 
-    const numberItem = this.innerValue as AstExpression;
+    const numberItem = this.innerValue as any;
 
     this.formChangesSubscription?.unsubscribe();
 
     this.form = this.fb.group({
       type: [numberItem?.type, [Validators.required]],
       branches: this.fb.array([
-          this.fb.control(numberItem.left),
-          this.fb.control(numberItem.right),
+          this.fb.control(numberItem.left ?? numberItem.expression),
+          this.fb.control(numberItem.right ?? numberItem.power),
         ],
       ),
     });

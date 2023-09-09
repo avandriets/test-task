@@ -5,4 +5,5 @@ export const ALL_OPERATORS: KeyValuePair[] = [
   { key: 'SUBTRACTION', value: '-' },
   { key: 'DIVISION', value: '/' },
   { key: 'MULTIPLICATION', value: '*' },
+  { key: 'POWER', value: '^' },
 ];
