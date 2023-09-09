@@ -67,17 +67,17 @@ export class FormulaAstEditorComponent {
           newNode['expression'] = cloneBT(root?.branches?.[0] ?? root.expression);
           newNode['power'] = cloneBT(root?.branches?.[1] ?? root.power);
           break;
-        // case 'FUNCTION':
-        //   const args = root.arguments.map((e: any) => dfs(e)).join(',');
-        //   return `${root.name}(${args})`;
+        case 'FUNCTION':
+          newNode['name'] = root.name;
+          newNode['arguments'] = (root?.branches ?? root.arguments)
+            .map((e: any) => cloneBT(e));
+          break;
         case 'ADDITION':
         case 'SUBTRACTION':
         case 'DIVISION':
         case 'MULTIPLICATION':
           newNode['left'] = cloneBT(root?.branches?.[0] ?? root.left);
           newNode['right'] = cloneBT(root?.branches?.[1] ?? root.right);
-        // default:
-        //   return root.name;
       }
 
       return newNode;

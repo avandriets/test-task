@@ -26,6 +26,8 @@ import { PiItemComponent } from './PI-item/pi-item.component';
 import { PI_ITEM_STRATEGY_ACCESSOR } from './PI-item/pi-item-strategy.service';
 import { E_ITEM_STRATEGY_ACCESSOR } from './E-item/e-item-strategy.service';
 import { EItemComponent } from './E-item/e-item.component';
+import { FUNCTION_ITEM_STRATEGY_ACCESSOR } from './function-item/group-item-strategy.service';
+import { FunctionItemComponent } from './function-item/function-item.component';
 
 export const formulaComponents: Array<Type<any>> = [
   FormulaItemComponent,
@@ -36,6 +38,7 @@ export const formulaComponents: Array<Type<any>> = [
   GroupItemComponent,
   PiItemComponent,
   EItemComponent,
+  FunctionItemComponent,
 ];
 
 @NgModule({
@@ -70,6 +73,7 @@ export const formulaComponents: Array<Type<any>> = [
     GROUP_ITEM_STRATEGY_ACCESSOR,
     PI_ITEM_STRATEGY_ACCESSOR,
     E_ITEM_STRATEGY_ACCESSOR,
+    FUNCTION_ITEM_STRATEGY_ACCESSOR,
   ],
 })
 export class FormulaItemsModule {

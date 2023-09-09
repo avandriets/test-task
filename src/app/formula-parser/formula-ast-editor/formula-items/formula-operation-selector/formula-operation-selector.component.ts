@@ -66,6 +66,18 @@ export class FormulaOperationSelectorComponent {
           },
         });
         break;
+      case 'SQRT':
+        numberItem = this.fb.control({
+          type: 'FUNCTION',
+          name: 'SQRT',
+          arguments: [
+            {
+              type: 'NUMBER',
+              value: 0,
+            }
+          ],
+        });
+        break;
       default:
         return;
     }

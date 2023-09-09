@@ -17,6 +17,11 @@
     <span>Parentheses</span>
   </button>
   <button mat-menu-item
+          (click)="addItem('SQRT')">
+    <mat-icon>Function</mat-icon>
+    <span>SQRT</span>
+  </button>
+  <button mat-menu-item
           [matMenuTriggerFor]="menuOperators">
     <mat-icon>calculate</mat-icon>
     <span>Operator</span>

@@ -1,0 +1,27 @@
+<form *ngIf="form"
+      [formGroup]="form">
+
+  <h3>{{formulaFunction?.type}} : {{formulaFunction?.name}}</h3>
+
+  <div fxLayout="row"
+       fxLayoutGap="16px"
+       fxLayoutAlign="space-between center">
+
+    <app-formula-operation-selector fxFlex="20"
+                                    [disabled]="this.branchesFormArray.length > 0"
+                                    (valueChange)="onAddItem($event)">
+    </app-formula-operation-selector>
+
+    <div fxFlex="80">
+      <div *ngFor="let item of branchesFormArray.controls; let i = index;"
+           class="pb-16"
+           formArrayName="branches">
+
+        <app-formula-item [formControlName]="i"
+                          (delete)="onDeleteGroup(i)">
+        </app-formula-item>
+      </div>
+    </div>
+  </div>
+
+</form>
