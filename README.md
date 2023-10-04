@@ -46,28 +46,6 @@ PI * SQR($r)
 
 ```
 
-Based on this, the following questions should be answered and tasks implemented:
-
-### 1) Analyze formula
-
-In order to eventually execute a formula, we need to analyze it and generate a model describing the different operations. Please describe the steps and software components you would need to implement in order to analyze a formula. Please also describe, what kind of data structure you would use as a result of the analysis and why you would choose this data structure.
-
-Note that you do not have to implement your proposed solution.
-
-### 2) Visualizing the formula
-
-Data visualization is one of the key aspects of Celonis' Software Products. In this task you should implement an interactive visualization of the formula entered.
-
-As a starting point, in the src/ folder you can find a parser as well as AST classes and a small function library implemented for demostration purposes.
-
-#### Tasks
-1) Describe the architecture and component structure you are planning to use in order to visualize the formula hierarchy. Note that also adding and deleting nodes should be considered here (see examples below).
-2) Generate a formula string from the tree. (Visualized Syntax Tree => Formula)
-3) Visualize a syntax tree / parse tree in a component. It should be easy for the user to distinguish between functions, constants etc. (Formula => Visualized Syntax Tree)
-4) Allow deletion of nodes from the tree
-5) Allow adding nodes to the tree
-
-
 #### Examples
 
 Someone has entered the following formula for calculating the area of a circle: `PI * SQR(4)` for a circle with a radius of `4`.
