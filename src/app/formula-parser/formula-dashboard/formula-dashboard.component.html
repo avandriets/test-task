@@ -1,8 +1,12 @@
-<h1>Formulizer!</h1>
+<mat-toolbar color="primary">
+  <span>Formula Editor</span>
+</mat-toolbar>
 
-<app-formula-editor [value]="formula$ | async"
-                    (update)="onFormulaUpdate($event)">
-</app-formula-editor>
+<div class="p-16">
+  <app-formula-editor [value]="formula$ | async"
+                      (update)="onFormulaUpdate($event)">
+  </app-formula-editor>
 
-<app-formula-ast-view>
-</app-formula-ast-view>
+  <app-formula-ast-view>
+  </app-formula-ast-view>
+</div>

@@ -15,6 +15,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PortalModule } from '@angular/cdk/portal';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormulaItemsModule } from './formula-ast-editor/formula-items/formula-items.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [
@@ -32,6 +34,8 @@ import { FormulaItemsModule } from './formula-ast-editor/formula-items/formula-i
     PortalModule,
     MatDividerModule,
     FormulaItemsModule,
+    MatToolbarModule,
+    MatTabsModule,
   ],
   declarations: [
     FormulaDashboardComponent,

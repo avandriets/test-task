@@ -6,17 +6,17 @@
   <button mat-stroked-button
           color="primary"
           (click)="generateAstTree()">
-    Generate AST Tree
+    Generate Tree
   </button>
   <button mat-stroked-button
           color="primary"
           (click)="generateFormula()">
-    Generate Formula
+    Generate TEXT Formula from Tree
   </button>
 </div>
 
 <div class="mat-body-1 pb-24">
-  <strong>Formula:</strong> {{ astFormula$ | async }}
+  <strong>TEXT Formula:</strong> {{ astFormula$ | async }}
 </div>
 
 <form *ngIf="form"
